@@ -1,0 +1,136 @@
+#body{
+	font-size: 13px;
+    font-family: Arial, sans-serif;
+	background: #fff url(../images/bg.jpg) center top fixed;
+}
+.wrapper-login{
+	display: table;
+	width: 100%;
+	height: 100%;
+}
+.box-login{
+	vertical-align: middle;
+	display: table-cell;
+
+}
+.box-login-2{
+	width: 360px;
+	max-width: 100%;
+	margin: 0 auto;
+	min-height: 300px;
+	background: rgba(255, 255, 255, 0.5);
+	border-radius: 5px;
+	padding: 10px;
+    -webkit-box-shadow: 0 1px 3px rgba(0,0,0,.13);
+    box-shadow: 0 1px 3px rgba(0,0,0,.13);
+}
+.form-signin-heading{
+	margin-bottom: 30px;
+}
+.box-login-2 form{
+	padding: 15px 35px 45px;
+}
+.box-login-2 input{
+	background: rgba(255, 255, 255, 0.5);
+	margin-bottom: 15px;
+}
+
+.dataTables_wrapper .dataTables_info{
+	padding: 5px 0;
+	text-align: center;
+}
+.dataTables_wrapper .pagination{
+	margin: 0
+}
+.form-control{
+	height: 30px;
+	padding: 4px 12px;
+}
+.form-horizontal label{
+	line-height: 30px;
+	text-align: right;
+}
+.datatables .checker{
+	margin-right: 0
+}
+#delete{
+	display: none
+}
+.delete-record{
+	color: #ce0000;
+	/*margin-left: 10px;*/
+}
+.delete-record:hover{
+	color: red;
+	cursor: pointer;
+}
+.edit-record{
+	color: #8a8afb;
+	/*margin-right: 10px;*/
+}
+.edit-record:hover{
+	color: #2727ef;
+	cursor: pointer;
+}
+
+.box-img{
+	width: 300px;
+	height: 200px;
+	/*border: 1px solid #d2d6de;*/
+	position: relative;
+	float: left;
+	margin-right: 30px;
+}
+.box-img i{
+	position: absolute;
+	right: 	1px;
+	top: 1px;
+	padding: 10px;
+	background: #ededed;
+	color: #367fa9;
+	cursor: pointer;
+	z-index: 99;
+}
+.box-img div{
+	position: absolute;
+	left: 	0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 9;
+	border: 1px solid #d2d6de;
+}
+
+.cke_chrome{
+	border-color: #d2d6de !important;
+	box-shadow: none !important; 
+}
+.cke_focus{
+	border-color: #2b579a !important;
+}
+.cke_bottom{
+	background: transparent !important;
+}
+.cke_focus .cke_bottom{
+	background: #2b579a !important;
+}
+
+.hinhanh{
+	max-width: 100% !important;
+	height: auto !important;
+}
+.del_imgList{
+	position: absolute;
+	right: 0;
+	top: 0;
+	padding: 3px;
+	background: #ccc;
+	font-size: 10px;
+	cursor: pointer;
+}
+.del_imgList:hover{
+		color: 	red
+}
+.select2-container--default .select2-selection--multiple{
+	height: auto
+}
