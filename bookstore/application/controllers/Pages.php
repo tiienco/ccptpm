@@ -31,7 +31,7 @@ class Pages extends CI_Controller {
 
         // print_r(json_decode($config[1]['value'],true));
     }
-
+    //moi
     function index(){  
         $category = $this->global->show_order_where('product_category','sort DESC, id ASC',array('status' => 1, 'is_home' => 1),'id,title,slug');
         $category_home = array();
