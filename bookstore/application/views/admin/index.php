@@ -31,6 +31,11 @@
 		<script src="<?php echo BASE_ADMIN_PLUGIN ?>ckeditor/ckeditor.js" type="text/javascript"></script> 
 		<script src="<?php echo BASE_ADMIN_PLUGIN ?>inputmask/jquery.mask.js" type="text/javascript"></script> 
 		<script src="<?php echo BASE_ADMIN_PLUGIN ?>select2/js/select2.full.min.js" type="text/javascript"></script> 
+
+		<link href="<?php echo BASE_ADMIN_PLUGIN ?>craftpip/css/jquery-confirm.min.css" rel="stylesheet" type="text/css" /> 
+		<script src="<?php echo BASE_ADMIN_PLUGIN ?>craftpip/js/jquery-confirm.js"></script>
+		<script src="<?php echo BASE_ADMIN_JS ?>notify.min.js"></script>
+
 		<script src="<?php echo BASE_ADMIN_JS ?>app.js" type="text/javascript"></script> 
 		<script src="<?php echo BASE_ADMIN_JS ?>admin.js" type="text/javascript"></script> 
 		<script>

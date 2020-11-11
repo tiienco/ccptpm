@@ -47,15 +47,26 @@ class Banner extends CI_Controller {
                 $arr['image'] = time()."_".$_FILES['image']['name'];
             }    
     		$id = $this->admin->insert('banner',$arr);
-    		if($id){
+
+            if($id){
                 if(!empty($_FILES['image']['name']))
                     move_uploaded_file($_FILES['image']['tmp_name'], './upload/banner/'. $arr['image']);
-    			echo"<script>alert('Thêm thành công');</script>";
-                echo"<script>window.location='".BASE_URL_ADMIN."banner/add/".$id."'</script>"; 
-    		}else{
-    			echo"<script>alert('Có lỗi xảy ra !');</script>";
-                echo"<script>window.location='".BASE_URL_ADMIN."banner/add'</script>";
-    		} 
+                echo json_encode(array('status' => 'true', "type" => "insert", "message" => "Tạo mới thành công", "id" => $id));
+                exit;
+            }else{
+                echo json_encode(array('status' => 'false', "type" => "insert", "message" => "Có lỗi xảy ra !", "id" => ""));
+                exit;
+            } 
+
+    		// if($id){
+      //           if(!empty($_FILES['image']['name']))
+      //               move_uploaded_file($_FILES['image']['tmp_name'], './upload/banner/'. $arr['image']);
+    		// 	echo"<script>alert('Thêm thành công');</script>";
+      //           echo"<script>window.location='".BASE_URL_ADMIN."banner/add/".$id."'</script>"; 
+    		// }else{
+    		// 	echo"<script>alert('Có lỗi xảy ra !');</script>";
+      //           echo"<script>window.location='".BASE_URL_ADMIN."banner/add'</script>";
+    		// } 
         }elseif($this->input->post('upd')){
         	$arr = array(
                 'title'         => $this->input->post('title'),
@@ -74,7 +85,10 @@ class Banner extends CI_Controller {
                 move_uploaded_file($_FILES['image']['tmp_name'], './upload/banner/'. $arr['image']);
                 unlink('./upload/banner/'.$data['_detail']['image']);
             } 
-    		redirect(BASE_URL_ADMIN."banner/add/".$id,'refresh');
+
+            echo json_encode(array('status' => 'true', "type" => "update", "message" => "Cập nhật thành công", "id" => $id));
+                exit;
+    		// redirect(BASE_URL_ADMIN."banner/add/".$id,'refresh');
         }
 
 		

@@ -48,11 +48,11 @@ class Menu extends CI_Controller {
         		
     		$id = $this->admin->insert('menu',$arr);
     		if($id){
-    			echo"<script>alert('Tạo mới thành công');</script>";
-                echo"<script>window.location='".BASE_URL_ADMIN."menu/add/".$id."'</script>"; 
+                echo json_encode(array('status' => 'true', "type" => "insert", "message" => "Tạo mới thành công", "id" => $id));
+                exit;
     		}else{
-    			echo"<script>alert('Có lỗi xảy ra !');</script>";
-                echo"<script>window.location='".BASE_URL_ADMIN."menu/add'</script>";
+                echo json_encode(array('status' => 'false', "type" => "insert", "message" => "Có lỗi xảy ra !", "id" => ""));
+                exit;
     		} 
         }elseif($this->input->post('upd')){
         	$arr = array(
@@ -65,9 +65,10 @@ class Menu extends CI_Controller {
                 'updated_at' => @date('Y-m-d H:i:s'),                        
                 'updated_by' => $id_user,            
             );             
-            $this->admin->update('menu',array('id' => $id),$arr);
-    		echo"<script>alert('Cập nhật thành công');</script>";
-            echo"<script>window.location='".BASE_URL_ADMIN."menu/add/".$id."'</script>"; 
+            $this->admin->update('menu',array('id' => $id),$arr);    		
+
+            echo json_encode(array('status' => 'true', "type" => "update", "message" => "Cập nhật thành công", "id" => $id));
+                exit;
         }
 		
 		$data['pages'] = 'menu/detail';

@@ -31,7 +31,7 @@ class Pages extends CI_Controller {
 
         // print_r(json_decode($config[1]['value'],true));
     }
-    //moi
+
     function index(){  
         $category = $this->global->show_order_where('product_category','sort DESC, id ASC',array('status' => 1, 'is_home' => 1),'id,title,slug');
         $category_home = array();
@@ -496,15 +496,15 @@ class Pages extends CI_Controller {
         }
 
         $ins  = array(
-            'fullname' => $fullname,
-            'phone' => $phone,
-            'email' => $email,
-            'province' => $province,
-            'district' => $district,
-            'address' => $address,
-            'note' => $note,
-            'qty' => $this->cart->total_items(),
-            'total' => $this->cart->total(),
+            'fullname'   => $fullname,
+            'phone'      => $phone,
+            'email'      => $email,
+            'province'   => $province,
+            'district'   => $district,
+            'address'    => $address,
+            'note'       => $note,
+            'qty'        => $this->cart->total_items(),
+            'total'      => $this->cart->total(),
             'created_at' => @date('Y-m-d H:i:s'),
             'updated_at' => @date('Y-m-d H:i:s'),
         );

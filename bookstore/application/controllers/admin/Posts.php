@@ -62,11 +62,16 @@ class Posts extends CI_Controller {
                 if(!empty($_FILES['image']['name'])){
                     move_uploaded_file($_FILES['image']['tmp_name'], './upload/posts/'. $arr['image']);
                 }
-                echo"<script>alert('Tạo mới thành công');</script>";
-                echo"<script>window.location='".BASE_URL_ADMIN."posts/add/".$id."'</script>"; 
+
+                echo json_encode(array('status' => 'true', "type" => "insert", "message" => "Tạo mới thành công", "id" => $id));
+                exit;
+                // echo"<script>alert('Tạo mới thành công');</script>";
+                // echo"<script>window.location='".BASE_URL_ADMIN."posts/add/".$id."'</script>"; 
             }else{
-                echo"<script>alert('Có lỗi xảy ra !');</script>";
-                echo"<script>window.location='".BASE_URL_ADMIN."posts/add/'</script>"; 
+                echo json_encode(array('status' => 'false', "type" => "insert", "message" => "Có lỗi xảy ra !", "id" => ""));
+                exit;
+                // echo"<script>alert('Có lỗi xảy ra !');</script>";
+                // echo"<script>window.location='".BASE_URL_ADMIN."posts/add/'</script>"; 
             } 
         }elseif($this->input->post('upd')){
         	$arr = array(
@@ -93,9 +98,11 @@ class Posts extends CI_Controller {
             if(!empty($_FILES['image']['name'])){                
                 move_uploaded_file($_FILES['image']['tmp_name'], './upload/posts/'. $arr['image']);
                 @unlink('./upload/posts/'.$data['_detail']['image']);
-            }             
-    		echo"<script>alert('Cập nhật thành công');</script>";
-            echo"<script>window.location='".BASE_URL_ADMIN."posts/add/".$id."'</script>"; 
+            }    
+            echo json_encode(array('status' => 'true', "type" => "update", "message" => "Cập nhật thành công", "id" => $id));
+                exit;         
+    		// echo"<script>alert('Cập nhật thành công');</script>";
+            // echo"<script>window.location='".BASE_URL_ADMIN."posts/add/".$id."'</script>"; 
         }
 		
 		$data['pages'] = 'posts/detail';
@@ -147,12 +154,16 @@ class Posts extends CI_Controller {
                 $arr['image'] = time()."_".$_FILES['image']['name'];
             
             $id = $this->admin->insert('posts_category',$arr);
-            if($id){         
-                echo"<script>alert('Tạo mới thành công');</script>";
-                echo"<script>window.location='".BASE_URL_ADMIN."posts/category_add/".$id."'</script>"; 
+            if($id){   
+                echo json_encode(array('status' => 'true', "type" => "insert", "message" => "Tạo mới thành công", "id" => $id));
+                exit;      
+                // echo"<script>alert('Tạo mới thành công');</script>";
+                // echo"<script>window.location='".BASE_URL_ADMIN."posts/category_add/".$id."'</script>"; 
             }else{
-                echo"<script>alert('Có lỗi xảy ra !');</script>";
-                echo"<script>window.location='".BASE_URL_ADMIN."posts/category_add/'</script>"; 
+                echo json_encode(array('status' => 'false', "type" => "insert", "message" => "Có lỗi xảy ra !", "id" => ""));
+                exit;
+                // echo"<script>alert('Có lỗi xảy ra !');</script>";
+                // echo"<script>window.location='".BASE_URL_ADMIN."posts/category_add/'</script>"; 
             } 
         }elseif($this->input->post('upd')){
             $arr = array(
@@ -166,9 +177,11 @@ class Posts extends CI_Controller {
                 'updated_by' => $id_user, 
             );        
            
-            $this->admin->update('posts_category',array('id' => $id),$arr);          
-            echo"<script>alert('Cập nhật thành công');</script>";
-            echo"<script>window.location='".BASE_URL_ADMIN."posts/category_add/".$id."'</script>"; 
+            $this->admin->update('posts_category',array('id' => $id),$arr);  
+            echo json_encode(array('status' => 'true', "type" => "update", "message" => "Cập nhật thành công", "id" => $id));
+                exit;        
+            // echo"<script>alert('Cập nhật thành công');</script>";
+            // echo"<script>window.location='".BASE_URL_ADMIN."posts/category_add/".$id."'</script>"; 
         }
         
         $data['pages'] = 'posts/category_detail';

@@ -34,8 +34,8 @@ class Product extends CI_Controller {
         }
 
         $data['category'] = $this->admin->show_order_where('product_category','sort DESC,id DESC',array('status' => 1));
-        $data['material'] = $this->admin->show_order_where('product_material','sort DESC,id DESC',array('status' => 1));
-        $data['color'] = $this->admin->show_order_where('product_color','sort DESC,id DESC',array('status' => 1));
+        // $data['material'] = $this->admin->show_order_where('product_material','sort DESC,id DESC',array('status' => 1));
+        // $data['color'] = $this->admin->show_order_where('product_color','sort DESC,id DESC',array('status' => 1));
 
 
         if($this->input->post('ins')){          
@@ -85,12 +85,17 @@ class Product extends CI_Controller {
                         move_uploaded_file($_FILES['image_list']['tmp_name'][$i],'./upload/product/'.$img_list[$i]);                 
                     } 
                 }
+
+                echo json_encode(array('status' => 'true', "type" => "insert", "message" => "Tạo mới thành công", "id" => $id));
+                exit;
               
-                echo"<script>alert('Tạo mới thành công');</script>";
-                echo"<script>window.location='".BASE_URL_ADMIN."product/add/".$id."'</script>"; 
+                // echo"<script>alert('Tạo mới thành công');</script>";
+                // echo"<script>window.location='".BASE_URL_ADMIN."product/add/".$id."'</script>"; 
             }else{
-                echo"<script>alert('Có lỗi xảy ra !');</script>";
-                echo"<script>window.location='".BASE_URL_ADMIN."product/add/'</script>"; 
+                echo json_encode(array('status' => 'false', "type" => "insert", "message" => "Có lỗi xảy ra !", "id" => ""));
+                exit;
+                // echo"<script>alert('Có lỗi xảy ra !');</script>";
+                // echo"<script>window.location='".BASE_URL_ADMIN."product/add/'</script>"; 
             } 
         }elseif($this->input->post('upd')){
         	$arr = array(
@@ -148,8 +153,11 @@ class Product extends CI_Controller {
                 } 
             }
 
-    		echo"<script>alert('Cập nhật thành công');</script>";
-            echo"<script>window.location='".BASE_URL_ADMIN."product/add/".$id."'</script>"; 
+            echo json_encode(array('status' => 'true', "type" => "update", "message" => "Cập nhật thành công", "id" => $id));
+                exit;
+
+    		// echo"<script>alert('Cập nhật thành công');</script>";
+            // echo"<script>window.location='".BASE_URL_ADMIN."product/add/".$id."'</script>"; 
         }
 		
 		$data['pages'] = 'product/detail';
@@ -226,12 +234,16 @@ class Product extends CI_Controller {
             );
             
             $id = $this->admin->insert('product_category',$arr);
-            if($id){         
-                echo"<script>alert('Tạo mới thành công');</script>";
-                echo"<script>window.location='".BASE_URL_ADMIN."product/category_add/".$id."'</script>"; 
+            if($id){  
+                echo json_encode(array('status' => 'true', "type" => "insert", "message" => "Tạo mới thành công", "id" => $id));
+                exit;       
+                // echo"<script>alert('Tạo mới thành công');</script>";
+                // echo"<script>window.location='".BASE_URL_ADMIN."product/category_add/".$id."'</script>"; 
             }else{
-                echo"<script>alert('Có lỗi xảy ra !');</script>";
-                echo"<script>window.location='".BASE_URL_ADMIN."product/category_add/'</script>"; 
+                echo json_encode(array('status' => 'false', "type" => "insert", "message" => "Có lỗi xảy ra !", "id" => ""));
+                exit;
+                // echo"<script>alert('Có lỗi xảy ra !');</script>";
+                // echo"<script>window.location='".BASE_URL_ADMIN."product/category_add/'</script>"; 
             } 
         }elseif($this->input->post('upd')){
             $arr = array(
@@ -246,9 +258,12 @@ class Product extends CI_Controller {
                 'updated_by' => $id_user, 
             );        
            
-            $this->admin->update('product_category',array('id' => $id),$arr);          
-            echo"<script>alert('Cập nhật thành công');</script>";
-            echo"<script>window.location='".BASE_URL_ADMIN."product/category_add/".$id."'</script>"; 
+            $this->admin->update('product_category',array('id' => $id),$arr);  
+
+            echo json_encode(array('status' => 'true', "type" => "update", "message" => "Cập nhật thành công", "id" => $id));
+                exit;        
+            // echo"<script>alert('Cập nhật thành công');</script>";
+            // echo"<script>window.location='".BASE_URL_ADMIN."product/category_add/".$id."'</script>"; 
         }
         
         $data['pages'] = 'product/category_detail';

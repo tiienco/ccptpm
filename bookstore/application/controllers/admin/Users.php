@@ -62,13 +62,20 @@ class Users extends CI_Controller {
 
         		
     		$id = $this->admin->insert('users',$arr);
-    		if($id){
-    			echo"<script>alert('Thêm thành công');</script>";
-                echo"<script>window.location='".BASE_URL_ADMIN."users/add/".$id."'</script>"; 
-    		}else{
-    			echo"<script>alert('Có lỗi xảy ra !');</script>";
-                echo"<script>window.location='".BASE_URL_ADMIN."users/add'</script>";
-    		} 
+            if($id){
+                echo json_encode(array('status' => 'true', "type" => "insert", "message" => "Tạo mới thành công", "id" => $id));
+                exit;
+            }else{
+                echo json_encode(array('status' => 'false', "type" => "insert", "message" => "Có lỗi xảy ra !", "id" => ""));
+                exit;
+            } 
+    		// if($id){
+    		// 	echo"<script>alert('Thêm thành công');</script>";
+      //           echo"<script>window.location='".BASE_URL_ADMIN."users/add/".$id."'</script>"; 
+    		// }else{
+    		// 	echo"<script>alert('Có lỗi xảy ra !');</script>";
+      //           echo"<script>window.location='".BASE_URL_ADMIN."users/add'</script>";
+    		// } 
         }elseif($this->input->post('upd')){
         	$arr = array(
                 'fullname'   => $this->input->post('fullname'),
@@ -89,8 +96,11 @@ class Users extends CI_Controller {
                 // $arr['password_no_hash'] = $this->input->post('password');
             }
             $this->admin->update('users',array('id' => $id),$arr);
-    		echo"<script>alert('Cập nhật thành công');</script>";
-            echo"<script>window.location='".BASE_URL_ADMIN."users/add/".$id."'</script>"; 
+
+            echo json_encode(array('status' => 'true', "type" => "update", "message" => "Cập nhật thành công", "id" => $id));
+                exit;
+    		// echo"<script>alert('Cập nhật thành công');</script>";
+            // echo"<script>window.location='".BASE_URL_ADMIN."users/add/".$id."'</script>"; 
         }
 		
 		$data['pages'] = 'users/detail';

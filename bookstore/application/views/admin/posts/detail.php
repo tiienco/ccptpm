@@ -26,7 +26,8 @@
 		<?php endif; ?>
 	</div>
 	<div class='box-body'>
-		<form class="form-horizontal" action='<?php echo BASE_URL_ADMIN."posts/add/".@$_detail['id'] ?>' method='POST' enctype="multipart/form-data">			
+		<!-- <form class="form-horizontal" action='<?php echo BASE_URL_ADMIN."posts/add/".@$_detail['id'] ?>' method='POST' enctype="multipart/form-data"> -->
+		<form class="form-horizontal" action='javascript:void(0)' method='POST' enctype="multipart/form-data" onsubmit="updateAction(this,'post','<?php echo BASE_URL_ADMIN."posts/add/".@$_detail['id'] ?>');return false;">			
 			<div class="form-group">
 				<label for="inputEmail3" class="col-sm-2">Tiêu đề</label>
 				<div class="col-sm-8">
@@ -133,6 +134,7 @@
 				<div class="col-sm-10 text-right">
 					<input type="reset" class="btn btn-default btn-sm" value='Làm lại'>
 					<input type="submit" class="btn btn-primary btn-sm" name="<?php echo @$_btn_name ?>" value="<?php echo @$_btn_value ?>">
+					<input type="hidden" class="btn btn-primary btn-sm" name="<?php echo @$_btn_name ?>" value="<?php echo @$_btn_value ?>">
 				</div>
             </div>
             

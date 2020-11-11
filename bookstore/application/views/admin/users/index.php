@@ -50,7 +50,7 @@
 		            <td><?php echo $d['created_at']?></td>		            
 		            <td><?php echo $d['updated_at']?></td>	
 		            <td class='text-center'>
-		            	<i class="fa fa-trash-o delete-record" onclick='deleteOne(this,<?php echo $d['id']?>,"category/delete")'></i>
+		            	<i class="fa fa-trash-o delete-record" onclick='deleteOne(this,<?php echo $d['id']?>,"users/delete")'></i>
 		            </td>
 		            
 		        </tr>

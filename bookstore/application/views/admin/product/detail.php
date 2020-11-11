@@ -26,11 +26,13 @@
 		<?php endif; ?>
 	</div>
 	<div class='box-body'>
-		<form class="form-horizontal" action='<?php echo BASE_URL_ADMIN."product/add/".@$_detail['id'] ?>' method='POST' enctype="multipart/form-data">			
+		<!-- <form class="form-horizontal" action='<?php echo BASE_URL_ADMIN."product/add/".@$_detail['id'] ?>' method='POST' enctype="multipart/form-data">		 -->
+
+		<form class="form-horizontal" action='javascript:void(0)' method='POST' enctype="multipart/form-data" onsubmit="updateAction(this,'product','<?php echo BASE_URL_ADMIN."product/add/".@$_detail['id'] ?>');return false;">	
 			<div class="form-group">
 				<label for="inputEmail3" class="col-sm-2">Tên sản phẩm</label>
 				<div class="col-sm-8">
-					<input type="text" name="title" class='form-control <?php echo (!@$_detail)?'title_alias':''; ?>' placeholder="Nón lưỡi trai" value="<?php echo @$_detail['title'] ?>">				
+					<input type="text" name="title" class='form-control <?php echo (!@$_detail)?'title_alias':''; ?>' placeholder="Nón lưỡi trai" value="<?php echo @$_detail['title'] ?>" required>				
 				</div>
 				<div class="col-sm-2">					
 					<select name="status" class="form-control" >
@@ -42,7 +44,7 @@
 			<div class="form-group">
 				<label for="inputEmail3" class="col-sm-2">Link sản phẩm</label>
 				<div class="col-sm-8">
-					<input type="text" name="slug" class='form-control slug' placeholder="non-luoi-trai" value="<?php echo @$_detail['slug'] ?>">				
+					<input type="text" name="slug" class='form-control slug' placeholder="non-luoi-trai" value="<?php echo @$_detail['slug'] ?>" required>				
 				</div>
 				<div class="col-sm-2">					
 					<select name="type" class="form-control" >
@@ -55,7 +57,7 @@
 			<div class="form-group">
 				<label for="inputEmail3" class="col-sm-2">Giá</label>
 				<div class="col-sm-8">
-					<input type="text" name="price" class='form-control' placeholder="100.000đ" value="<?php echo @$_detail['price'] ?>">				
+					<input type="text" name="price" class='form-control' placeholder="100.000đ" value="<?php echo @$_detail['price'] ?>" required>				
 				</div>
 				
 			</div>
@@ -111,16 +113,16 @@
 			</div>
 
 
-			<div class="form-group">
+			<!-- <div class="form-group">
 				<div id='slide-img' class="form-group">
 					<label for="inputEmail3" class="col-sm-2">Danh sách ảnh</label>
 					<div class="col-sm-8">
 						<input accept="image/*" type="file" name="image_list[]" multiple="">				
 					</div>
 				</div>
-			</div>
+			</div> -->
 
-			<div class="form-group">
+			<!-- <div class="form-group">
 				<div class="col-sm-2"></div>
 				<div class="col-sm-10" style="    padding: 0;">					
 					<?php 
@@ -134,7 +136,7 @@
 					}
 					?>
 				</div>	
-			</div>
+			</div> -->
 	
 			<div class="form-group">
 				<label for="inputEmail3" class="col-sm-2">Meta keyword</label>
@@ -155,6 +157,7 @@
 				<div class="col-sm-10 text-right">
 					<input type="reset" class="btn btn-default btn-sm" value='Làm lại'>
 					<input type="submit" class="btn btn-primary btn-sm" name="<?php echo @$_btn_name ?>" value="<?php echo @$_btn_value ?>">
+					<input type="hidden" class="btn btn-primary btn-sm" name="<?php echo @$_btn_name ?>" value="<?php echo @$_btn_value ?>">
 				</div>
             </div>
             
